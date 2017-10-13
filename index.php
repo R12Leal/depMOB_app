@@ -8,7 +8,9 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="assets/admin_template/css/templatemo_main.css">
-    <title>depMOB_app</title>
+    <link rel="stylesheet" href="assets/js/css/alertify.min.css" />
+    <link rel="stylesheet" href="assets/js/css/themes/default.min.css" />
+    <script src="assets/js/alertify.min.js"></script>
     <?php echo Xcrud::load_css(); ?>
 </head>
 <body>

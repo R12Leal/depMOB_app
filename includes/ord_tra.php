@@ -3,7 +3,7 @@
   include('./lib/xcrud/xcrud.php');
   //
   $xcrud = Xcrud::get_instance();
-  $xcrud->language('en');
+  $xcrud->language('es');
   $xcrud->table('orden');
   $xcrud->table_name('Lista de Órdenes', 'Some tooltip text','icon-leaf');
   $xcrud->columns('idOrden, nExpediente, nDecreto, idEmpresa, idSituacion, data_ini, data_fin, estado');
@@ -24,6 +24,7 @@
   //
   $list_tra = $xcrud->nested_table('list_tra','idOrden','ord_tra_sit','idOrden');
   $list_tra->table_name('Trabajos asignados');
+  $list_tra->language('es');
   $list_tra->relation('idTrabajo','trabajo','idTrabajo','nTrabajo');
   $list_tra->columns('idTrabajo, ot_data_ini, ot_data_fin, cantidad,precio');
   $list_tra->unset_view();
