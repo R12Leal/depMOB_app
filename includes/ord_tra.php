@@ -1,5 +1,5 @@
 <?php
-  //
+  // Carga de librerías.
   include('./lib/xcrud/xcrud.php');
   //
   $xcrud = Xcrud::get_instance();
@@ -10,6 +10,7 @@
   $xcrud->unset_numbers();
   $xcrud->order_by('idOrden','desc');
   $xcrud->change_type('comentario', 'textarea');
+  $xcrud->change_type('estado','select','','ABIERTO, CERRADO, SUSPENDIDO');
   //
   $xcrud->label('idOrden','Nº de Orden');
   $xcrud->label('nExpediente','Nº Expediente');
@@ -21,6 +22,8 @@
   $xcrud->label('estado','Estado');
   $xcrud->relation('idEmpresa','empresa','idEmpresa','nEmpresa');
   $xcrud->relation('idSituacion','situacion','idSituacion',array('nCalle','nNum','nBarriada'),null,null,null,' - ');
+  //
+  $xcrud->validation_required('nExpediente')->validation_required('nDecreto')->validation_required('estado')->validation_required('idEmpresa')->validation_required('idSituacion');
   //
   $list_tra = $xcrud->nested_table('list_tra','idOrden','ord_tra_sit','idOrden');
   $list_tra->table_name('Trabajos asignados');
@@ -36,5 +39,7 @@
   $list_tra->label('cantidad','Cantidad');
   $list_tra->label('precio','Precio (€)');
   $list_tra->change_type('idOrden','none');
+  //
+  $list_tra->validation_required('idTrabajo');
   //
 ?>
